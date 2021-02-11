@@ -3,6 +3,8 @@ from django.views.generic import (
     DeleteView
 )
 
+from django.urls import reverse, reverse_lazy
+
 from .models import Recipe
 
 
@@ -13,7 +15,7 @@ class RecipeListView(ListView):
 class RecipeCreateView(CreateView):
     model = Recipe
     fields = ["title", "content", "description"]
-    success_url = "/"
+    success_url = reverse_lazy("recipe:index")
 
 
 class RecipeDetailView(DetailView):
@@ -23,9 +25,12 @@ class RecipeDetailView(DetailView):
 class RecipeUpdateView(UpdateView):
     model = Recipe
     fields = ["title", "content", "description"]
-    success_url = "/"
+    # success_url = "/"
 
+    def get_success_url(self):
+        pk = self.kwargs.get("pk")
+        return reverse("recipe:detail", kwargs={"pk": pk})
 
 class RecipeDeleteView(DeleteView):
     model = Recipe
-    success_url = "/"
+    success_url = reverse_lazy("recipe:index")
