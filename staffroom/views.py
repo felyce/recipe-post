@@ -1,3 +1,5 @@
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# Create your views here.
+
+class StaffroomTemplateView(TemplateView):
+    template_name = "staffroom/index.html"
