@@ -8,6 +8,7 @@ from django.urls import reverse, reverse_lazy
 from django.contrib import messages
 
 from recipe.models import Recipe
+from recipe.forms import RecipeForm
 
 
 class StaffroomTemplateView(TemplateView):
@@ -26,8 +27,19 @@ class StaffroomTemplateView(TemplateView):
 
 class RecipeCreateView(CreateView):
     model = Recipe
-    fields = ["title", "content", "description", "image",]
+    form_class = RecipeForm
     success_url = reverse_lazy("recipe:index")
+
+    def post(self, request, *args, **kwargs):
+        user = request.user
+        data = request.POST.dict()
+        data['user'] = user.id
+        form = RecipeForm(data=data)
+
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
 
     def form_valid(self, form):
         messages.success(self.request, "更新しました")
