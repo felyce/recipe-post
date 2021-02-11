@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'recipe',
     'comment',
+    'staffroom',
 
     'crispy_forms',
     'imagekit',
