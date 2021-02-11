@@ -9,7 +9,7 @@
         </div>
         <div class="col-lg-7">
             {% if recipe.image %}
-                <img src="{{ recipe.image.url }}" width="640" class="img-fluid rounded border">
+                <img src="{{ recipe.detail_main.url }}" width="640" class="img-fluid rounded border">
             {% else %}
                 <img src="{% static 'images/01.jpg' %}" width="640" class="img-fluid rounded border">
             {% endif %}
