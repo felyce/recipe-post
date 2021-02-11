@@ -8,7 +8,13 @@
                 レシピ一覧
             </div>
             <div class="card-body">
-
+                <table class="table">
+                    {% for recipe in recipe_list %}
+                        <tr>
+                            <th>{{ recipe.title }}</th>
+                        </tr>
+                    {% endfor %}
+                </table>
             </div>
         </div>
     </div>
