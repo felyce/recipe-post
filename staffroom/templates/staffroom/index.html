@@ -12,6 +12,12 @@
                     {% for recipe in recipe_list %}
                         <tr>
                             <th>{{ recipe.title }}</th>
+                            <th>
+                                <a href="{% url 'recipe:detail' recipe.id %}"
+                                   class="btn btn-primary">詳細</a>
+                                <a href="{% url 'recipe:update' recipe.id %}"
+                                   class="btn btn-secondary">編集</a>
+                            </th>
                         </tr>
                     {% endfor %}
                 </table>
