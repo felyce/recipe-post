@@ -3,6 +3,8 @@ from django.test import TestCase
 
 class TestRecipe(TestCase):
 
+    fixtures = ["recipe.json", "user.json", ]
+
     def test_top_page(self):
         res = self.client.get("/")
         self.assertEqual(res.status_code, 200)
