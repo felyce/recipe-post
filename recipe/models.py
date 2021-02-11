@@ -7,6 +7,8 @@ class Recipe(models.Model):
 
     description = models.TextField(blank=True, default="")
 
+    image = models.ImageField(upload_to="images/uploaded/", default=None, null=True, blank=True)
+
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
