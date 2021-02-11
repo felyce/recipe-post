@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load imagekit %}
 
 {% block body %}
 
@@ -9,12 +10,12 @@
 
         <div class="media">
             {% if recipe.image %}
-                <img src="{{ recipe.image.url }}"
-                     class="align-self-center mr-3" alt="..." width="120">
+                {% thumbnail "120x90" recipe.image -- class="align-self-center mr-3" %}
             {% else %}
                 <img src="{% static 'images/01.jpg' %}"
                      class="align-self-center mr-3" alt="..." width="120">
-            {% endif %}            <div class="media-body">
+            {% endif %}
+            <div class="media-body">
                 <a href="{% url 'recipe:detail' recipe.id %}">
                     <h5 class="mt-0">{{ recipe.title }}</h5>
                 </a>
