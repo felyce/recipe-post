@@ -10,7 +10,7 @@ class StaffroomTemplateView(TemplateView):
         context = super().get_context_data(**kwargs)
 
         if self.request.user.is_authenticated:
-            context['recipe_list'] = Recipe.objects.filter(user=self.request.user)
+            context['recipe_list'] = Recipe.objects.filter(user=self.request.user).prefetch_related("comment_set")
         else:
             context['recipe_list'] = None
 
