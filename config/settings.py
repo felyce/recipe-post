@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'recipe',
 
     'crispy_forms',
+    'imagekit',
 ]
 
 MIDDLEWARE = [
