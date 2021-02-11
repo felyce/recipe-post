@@ -3,7 +3,7 @@
 
 {% block body %}
 
-    <h1>recipe_list.html</h1>
+    <h1>レシピ一覧</h1>
 
     {% for recipe in recipe_list %}
 
@@ -11,11 +11,7 @@
             <img src="{% static 'images/01.jpg' %}" class="align-self-center mr-3" alt="..." width="120">
             <div class="media-body">
                 <h5 class="mt-0">{{ recipe.title }}</h5>
-                <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras
-                    purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi
-                    vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
-                <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis
-                    natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                <p>{{ recipe.description }}</p>
             </div>
         </div>
 
