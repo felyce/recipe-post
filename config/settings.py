@@ -128,3 +128,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / Path("assets")
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
