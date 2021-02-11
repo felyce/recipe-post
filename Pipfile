@@ -8,6 +8,9 @@ django = "*"
 django-crispy-forms = "*"
 pillow = "*"
 django-imagekit = "*"
+psycopg2-binary = "*"
+dj-database-url = "*"
+gunicorn = "*"
 
 [dev-packages]
 
