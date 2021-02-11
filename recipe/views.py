@@ -1,4 +1,4 @@
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView
 
 from .models import Recipe
 
@@ -15,3 +15,10 @@ class RecipeCreateView(CreateView):
 
 class RecipeDetailView(DetailView):
     model = Recipe
+
+
+# 新規追加
+class RecipeUpdateView(UpdateView):
+    model = Recipe
+    fields = ["title", "content", "description"]
+    success_url = "/"
