@@ -10,8 +10,14 @@ from django.contrib import messages
 from recipe.models import Recipe
 from recipe.forms import RecipeForm
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class StaffroomTemplateView(TemplateView):
+
+class StaffroomMixin(LoginRequiredMixin):
+    login_url = reverse_lazy("login")
+
+
+class StaffroomTemplateView(StaffroomMixin, TemplateView):
     template_name = "staffroom/index.html"
 
     def get_context_data(self, **kwargs):
@@ -25,7 +31,7 @@ class StaffroomTemplateView(TemplateView):
         return context
 
 
-class RecipeCreateView(CreateView):
+class RecipeCreateView(StaffroomMixin, CreateView):
     model = Recipe
     form_class = RecipeForm
     success_url = reverse_lazy("recipe:index")
@@ -50,7 +56,7 @@ class RecipeCreateView(CreateView):
         return super().form_invalid(form)
 
 
-class RecipeUpdateView(UpdateView):
+class RecipeUpdateView(StaffroomMixin, UpdateView):
     model = Recipe
     fields = ["title", "content", "description", "image", ]
     # success_url = "/"
@@ -68,7 +74,7 @@ class RecipeUpdateView(UpdateView):
         return super().form_invalid(form)
 
 
-class RecipeDeleteView(DeleteView):
+class RecipeDeleteView(StaffroomMixin, DeleteView):
     model = Recipe
     success_url = reverse_lazy("recipe:index")
 
