@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block body %}
 
@@ -32,6 +33,15 @@
         </div>
         <div class="col">
             <p class="text-muted">変更日：{{ recipe.modified }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form method="post" action="">
+                {% csrf_token %}
+                {{ CommentForm|crispy }}
+                <button type="submit" class="btn btn-primary">送信</button>
+            </form>
         </div>
     </div>
     <hr>
